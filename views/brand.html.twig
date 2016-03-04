@@ -3,15 +3,44 @@
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <meta charset="utf-8">
-        <title>Shoe Store | Home</title>
+        <title>Shoe Store | {{ brand.getBrandName }}</title>
     </head>
     <body>
         <div class="jumbotron">
             <div class="container">
-                <h1>SHOEZ</h1>
+                <h1>{{ brand.getBrandName }}</h1>
+                <form class="" action="/brands" method="get">
+                    <button class="btn btn-primary" type="submit" name="home">Back to Brands</button>
+                </form>
             </div>
         </div>
         <div class="container">
+            <h3><strong>Price Range:</strong> {{ brand.getPriceRange }}</h3>
+
+            {% if all_stores is not empty %}
+                <h4>Add a store to this store:</h4>
+                <form action='/store/{id}/add_store' method='post'>
+                    <input id="brand_id" name="brand_id" type="hidden" value="{{ brand.getId }}">
+                    <label for="store_id">Select a store</label>
+                    <select name='store_id' type='text'>
+                        {% for store in all_stores %}
+                            <option value="{{ store.getId }}"> {{ store.getStoreName }} </option>
+                        {% endfor %}
+                    </select>
+                    <button class='btn' type='submit'>Add store</button>
+                </form>
+            {% endif %}
+
+            <form class="" action="/brand/{{ brand.getId }}/edit" method="get">
+                <button class="btn btn-warning" type="submit" name="home">Edit this Brand</button>
+            </form>
+            <br>
+            <form class="" action="/brand/{{ brand.getId }}/delete" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <button class="btn btn-danger" type="submit" name="delete">Delete this Brand</button>
+            </form>
+
+            <hr>
             <form class="" action="/" method="get">
                 <button class="btn btn-primary" type="submit" name="home">Back to Home</button>
             </form>

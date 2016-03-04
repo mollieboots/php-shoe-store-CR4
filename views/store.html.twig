@@ -17,6 +17,29 @@
         <div class="container">
             <h3><strong>Location:</strong> {{ store.getLocation }}</h3>
 
+            {% if brands is not empty %}
+                <p>Here are the brands for this store:</p>
+                <ul>
+                    {% for brand in brands %}
+                        <li>{{ brand.getBrandName }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+
+                <h4>Add a brand to this store:</h4>
+                <form action='/store/{id}/add_brand' method='post'>
+                    <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
+                    <label for="brand_id">Select a brand</label>
+                    <select name='brand_id' type='text'>
+                        {% for brand in brands %}
+                            <option value="{{ brand.getId }}"> {{ brand.getBrandName }} </option>
+                        {% endfor %}
+                    </select>
+                    <button class='btn' type='submit'>Add brand</button>
+                </form>
+
+
             <form class="" action="/store/{{ store.getId }}/edit" method="get">
                 <button class="btn btn-warning" type="submit" name="home">Edit this Store</button>
             </form>

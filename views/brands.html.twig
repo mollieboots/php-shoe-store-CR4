@@ -12,9 +12,9 @@
             </div>
         </div>
         <div class="container">
-            {% if brands is not empty %}
-                {% for brand in brands %}
-                    <h3><a href="/brand/{{ brand.getId }}">{{ brand.getStoreName }}</a></h3>
+            {% if all_brands is not empty %}
+                {% for brand in all_brands %}
+                    <h3><a href="/brand/{{ brand.getId }}">{{ brand.getBrandName }}</a></h3>
                 {% endfor %}
             {% else %}
                 <h2>There aren't any brands yet :( Add some?</h2>
@@ -27,7 +27,7 @@
                 <label for="price_range">Price Range:</label>
                 <input type="text" name="price_range" placeholder="ex: $, $$, $$$">
 
-                <button class="btn btn-success" type="submit" name="button">Add Brand</button>
+                <button class="btn btn-success" type="submit" name="button">Add /B</button>
             </form>
 
             <form class="" action="/" method="get">
