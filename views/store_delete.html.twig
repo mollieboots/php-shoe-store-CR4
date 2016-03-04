@@ -3,15 +3,19 @@
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <meta charset="utf-8">
-        <title>Shoe Store | Home</title>
+        <title>Shoe Store | Deleted {{ store.getStoreName }}</title>
     </head>
     <body>
         <div class="jumbotron">
             <div class="container">
-                <h1>SHOEZ</h1>
+                <h1>{{ store.getStoreName }} has been deleted.</h1>
             </div>
         </div>
         <div class="container">
+            <form class="" action="/stores" method="get">
+                <button class="btn btn-primary" type="submit" name="home">Back to Stores</button>
+            </form>
+            <br>
             <form class="" action="/" method="get">
                 <button class="btn btn-primary" type="submit" name="home">Back to Home</button>
             </form>

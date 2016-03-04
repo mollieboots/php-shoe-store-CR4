@@ -12,8 +12,26 @@
             </div>
         </div>
         <div class="container">
+            {% if stores is not empty %}
+                {% for store in stores %}
+                    <h3><a href="/store/{{ store.getId }}">{{ store.getStoreName }}</a></h3>
+                {% endfor %}
+            {% else %}
+                <h2>There aren't any stores yet :( Add some?</h2>
+            {% endif %}
+
+            <form class="" action="/stores" method="post">
+                <label for="store_name">Enter a Store Name:</label>
+                <input type="text" name="store_name" placeholder="ex: Nordstrom">
+
+                <label for="location">Enter Store Location:</label>
+                <input type="text" name="location" placeholder="ex: Address, City, etc">
+
+                <button class="btn btn-success" type="submit" name="button">Add Store</button>
+            </form>
+
             <form class="" action="/" method="get">
-                <button type="submit" name="home">Back to Home</button>
+                <button class="btn btn-primary" type="submit" name="home">Back to Home</button>
             </form>
         </div>
     </body>

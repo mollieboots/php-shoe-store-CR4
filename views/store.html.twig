@@ -3,12 +3,32 @@
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <meta charset="utf-8">
-        <title>Shoe Store | Home</title>
+        <title>Shoe Store | {{ store.getStoreName }}</title>
     </head>
     <body>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>{{ store.getStoreName }}</h1>
+                <form class="" action="/stores" method="get">
+                    <button class="btn btn-primary" type="submit" name="home">Back to Stores</button>
+                </form>
+            </div>
+        </div>
         <div class="container">
+            <h3><strong>Location:</strong> {{ store.getLocation }}</h3>
+
+            <form class="" action="/store/{{ store.getId }}/edit" method="get">
+                <button class="btn btn-warning" type="submit" name="home">Edit this Store</button>
+            </form>
+            <br>
+            <form class="" action="/store/{{ store.getId }}/delete" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <button class="btn btn-danger" type="submit" name="delete">Delete this Store</button>
+            </form>
+
+            <hr>
             <form class="" action="/" method="get">
-                <button type="submit" name="home">Back to Home</button>
+                <button class="btn btn-primary" type="submit" name="home">Back to Home</button>
             </form>
         </div>
     </body>
