@@ -36,7 +36,9 @@
 
     //individual store view, get here from the list of all stores page
     $app->get("/store/{id}", function($id) use ($app) {
+        var_dump($id);
         $store = Store::find($id);
+        var_dump($store);
         return $app['twig']->render('store.html.twig', array('stores' => Store::getAll(), 'store' => $store, 'brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
     });
 

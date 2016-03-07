@@ -19,7 +19,7 @@
 
             {% if all_stores is not empty %}
                 <h4>Add a store to this store:</h4>
-                <form action='/store/{id}/add_store' method='post'>
+                <form action='/brand/{{brand.getId}}/add_store' method='post'>
                     <input id="brand_id" name="brand_id" type="hidden" value="{{ brand.getId }}">
                     <label for="store_id">Select a store</label>
                     <select name='store_id' type='text'>

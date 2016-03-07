@@ -28,11 +28,11 @@
 
 
                 <h4>Add a brand to this store:</h4>
-                <form action='/store/{id}/add_brand' method='post'>
+                <form action='/store/{{store.getId}}/add_brand' method='post'>
                     <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
                     <label for="brand_id">Select a brand</label>
                     <select name='brand_id' type='text'>
-                        {% for brand in brands %}
+                        {% for brand in all_brands %}
                             <option value="{{ brand.getId }}"> {{ brand.getBrandName }} </option>
                         {% endfor %}
                     </select>

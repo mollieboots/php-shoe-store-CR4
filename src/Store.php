@@ -85,7 +85,7 @@
             $stores = Store::getAll();
             foreach($stores as $store) {
                 $store_id = $store->getId();
-                if ($store_id = $search_id) {
+                if ($store_id == $search_id) {
                     $found_store = $store;
                 }
             }
