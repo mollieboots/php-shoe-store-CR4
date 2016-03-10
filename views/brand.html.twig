@@ -17,6 +17,15 @@
         <div class="container">
             <h3><strong>Price Range:</strong> {{ brand.getPriceRange }}</h3>
 
+            {% if stores is not empty %}
+                <p>Here are the stores for this brand:</p>
+                <ul>
+                    {% for store in stores %}
+                        <li>{{ store.getStoreName }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
             {% if all_stores is not empty %}
                 <h4>Add a store to this store:</h4>
                 <form action='/brand/{{brand.getId}}/add_store' method='post'>

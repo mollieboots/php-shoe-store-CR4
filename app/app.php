@@ -106,7 +106,7 @@
         $brand = Brand::find($id);
         $brand->updateBrandName($new_name);
         $brand->updatePriceRange($new_price_range);
-        return $app['twig']->render('brand.html.twig', array('brand' => $brand));
+        return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'all_stores' => Store::getAll()));
     });
 
     //deletes individual brand from database
@@ -115,6 +115,13 @@
         $brand->deleteBrand();
         return $app['twig']->render('brand_delete.html.twig', array('brand' => $brand));
     });
+
+    $app->post("/brand/{id}/add_store", function($id) use ($app) {
+      $brand = Brand::find($id);
+      $store = Store::find($_POST['store_id']);
+      $brand->addStore($store);
+      return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $brand->getStores(), 'store' => $store, 'all_stores' => Store::getAll()));
+  });
 
     return $app;
 
